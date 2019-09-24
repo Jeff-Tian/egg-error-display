@@ -1,0 +1,78 @@
+{
+  "name": "egg-aliyun-openapi",
+  "version": "0.0.0-development",
+  "description": "eggjs plugin for invoke aliyun openapi, wrapper of OpenAPI POP core SDK for Node.js",
+  "eggPlugin": {
+    "name": "aliyunOpenApi",
+    "dependencies": []
+  },
+  "keywords": [
+    "egg",
+    "eggPlugin",
+    "egg-plugin",
+    "aliyun-openapi"
+  ],
+  "dependencies": {
+    "@alicloud/pop-core": "^1.7.7",
+    "debug": "^2.6.1"
+  },
+  "devDependencies": {
+    "@types/mocha": "^5.2.6",
+    "@types/node": "^10.12.0",
+    "@types/supertest": "^2.0.8",
+    "autod": "^3.0.0",
+    "autod-egg": "^1.0.0",
+    "coffee": "^5.2.1",
+    "egg": "^2.0.0",
+    "egg-bin": "^4.13.1",
+    "egg-ci": "^1.8.0",
+    "egg-mock": "^3.13.0",
+    "egg-ts-helper": "^1.13.0",
+    "nock": "^11.3.1",
+    "supertest": "^4.0.2",
+    "ts-node": "^8.2.0",
+    "tsc": "^1.20150623.0",
+    "tslib": "^1.9.3",
+    "tslint": "^5.11.0",
+    "typescript": "3.6.2",
+    "webstorm-disable-index": "^1.2.0",
+    "semantic-release": "^15.13.24"
+  },
+  "egg": {
+    "typescript": true
+  },
+  "engines": {
+    "node": ">=8.9.0"
+  },
+  "scripts": {
+    "test": "npm run lint -- --fix && egg-bin pkgfiles && npm run test-local",
+    "test-local": "npm run tsc && egg-bin test",
+    "tsc": "ets && tsc -p tsconfig.json",
+    "cov": "egg-bin cov",
+    "lint": "tslint .",
+    "ci": "egg-bin pkgfiles --check && npm run lint && npm run test-local && npm run cov",
+    "pkgfiles": "egg-bin pkgfiles",
+    "autod": "autod",
+    "clean": "ets clean",
+    "prepublish": "npm run test-local",
+    "semantic-release": "semantic-release"
+  },
+  "files": [
+    "config",
+    "app.js",
+    "index.d.ts"
+  ],
+  "ci": {
+    "version": "8, 9"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jeff-Tian/egg-aliyun-openapi"
+  },
+  "bugs": {
+    "url": "https://github.com/Jeff-Tian/egg-aliyun-openapi/issues"
+  },
+  "homepage": "https://github.com/Jeff-Tian/egg-aliyun-openapi",
+  "author": "jeff.tian@outlook.com",
+  "license": "MIT"
+}
