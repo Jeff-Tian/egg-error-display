@@ -5,7 +5,7 @@ module.exports = appInfo => {
 
     config.keys = "123456";
 
-    config.onError = {
+    config.errorDisplay = {
         isProd: () => false
     }
 

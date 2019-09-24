@@ -2,6 +2,6 @@
 
 import {Application} from "egg"
 
-exports.onError = {
+exports.errorDisplay = {
     isProd: (app: Application) => app.env === 'prod' || app.env === 'production'
 }

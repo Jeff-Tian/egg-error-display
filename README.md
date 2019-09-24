@@ -1,23 +1,23 @@
-# egg-on-error
+# egg-error-display
 
 > Allow customize the default egg-onerror's definition of isProd (线上 !== 生产)
 
 [![NPM version][npm-image]][npm-url]
-[![Build Status](https://travis-ci.com/Jeff-Tian/egg-on-error.svg?branch=master)](https://travis-ci.com/Jeff-Tian/egg-on-error)
-[![Build status](https://ci.appveyor.com/api/projects/status/jnmcoqymjmyvf0s8?svg=true)](https://ci.appveyor.com/project/Jeff-Tian/egg-on-error)
-[![codecov](https://codecov.io/gh/Jeff-Tian/egg-on-error/branch/master/graph/badge.svg)](https://codecov.io/gh/Jeff-Tian/egg-on-error)
+[![Build Status](https://travis-ci.com/Jeff-Tian/egg-error-display.svg?branch=master)](https://travis-ci.com/Jeff-Tian/egg-error-display)
+[![Build status](https://ci.appveyor.com/api/projects/status/jnmcoqymjmyvf0s8?svg=true)](https://ci.appveyor.com/project/Jeff-Tian/egg-error-display)
+[![codecov](https://codecov.io/gh/Jeff-Tian/egg-error-display/branch/master/graph/badge.svg)](https://codecov.io/gh/Jeff-Tian/egg-error-display)
 [![David deps][david-image]][david-url]
 [![Known Vulnerabilities][snyk-image]][snyk-url]
 [![npm download][download-image]][download-url]
 
-[npm-image]: https://img.shields.io/npm/v/egg-on-error.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/egg-on-error
-[david-image]: https://img.shields.io/david/jeff-tian/egg-on-error.svg?style=flat-square
-[david-url]: https://david-dm.org/jeff-tian/egg-on-error
-[snyk-image]: https://snyk.io/test/npm/egg-on-error/badge.svg?style=flat-square
-[snyk-url]: https://snyk.io/test/npm/egg-on-error
-[download-image]: https://img.shields.io/npm/dm/egg-on-error.svg?style=flat-square
-[download-url]: https://npmjs.org/package/egg-on-error
+[npm-image]: https://img.shields.io/npm/v/egg-error-display.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/egg-error-display
+[david-image]: https://img.shields.io/david/jeff-tian/egg-error-display.svg?style=flat-square
+[david-url]: https://david-dm.org/jeff-tian/egg-error-display
+[snyk-image]: https://snyk.io/test/npm/egg-error-display/badge.svg?style=flat-square
+[snyk-url]: https://snyk.io/test/npm/egg-error-display
+[download-image]: https://img.shields.io/npm/dm/egg-error-display.svg?style=flat-square
+[download-url]: https://npmjs.org/package/egg-error-display
 
 ## Why
 egg 项目本地跑起来后，如果有报错，会展示非常详细的错误堆栈。但是一旦发布到线上，就只会显示一个出错了，但是具体信息被隐藏了。
@@ -32,7 +32,7 @@ egg 项目本地跑起来后，如果有报错，会展示非常详细的错误�
 ## Install
 
 ```bash
-$ npm i egg-on-error --save
+$ npm i egg-error-display --save
 ```
 
 ## Usage
@@ -42,7 +42,7 @@ $ npm i egg-on-error --save
 // {app_root}/config/plugin.[t|j]s
 exports.onError = {
   enable: true,
-  package: "egg-on-error"
+  package: "egg-error-display"
 };
 ```
 

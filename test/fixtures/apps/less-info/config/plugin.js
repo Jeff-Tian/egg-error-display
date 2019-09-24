@@ -1,4 +1,4 @@
-exports.onError = {
+exports.errorDisplay = {
     enable: true,
     package: '../../../../../',
 };

@@ -1,9 +1,9 @@
 {
-  "name": "egg-on-error",
+  "name": "egg-error-display",
   "version": "0.0.0-development",
   "description": "Allow customize the default egg-onerror's definition of isProd (线上 !== 生产)",
   "eggPlugin": {
-    "name": "on-error",
+    "name": "errorDisplay",
     "dependencies": []
   },
   "keywords": [

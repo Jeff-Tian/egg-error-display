@@ -4,7 +4,7 @@ module.exports = app => {
     const {router} = app;
 
     router.get("/", ctx => {
-        ctx.body = "hi, " + app.plugins.onError.name;
+        ctx.body = "hi, " + app.plugins.errorDisplay.name;
     });
 
     router.get('/error', () => {

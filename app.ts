@@ -17,7 +17,7 @@ export default class AppBootHook {
         const onError = require('egg-onerror/config/config.default')
 
         const onErrorConfig = app.config.onerror
-        const isProd = app.config.onError.isProd
+        const isProd = app.config.errorDisplay.isProd
         onErrorConfig.html = function (err: any) {
             const status = detectStatus(err)
             const errorPageUrl =

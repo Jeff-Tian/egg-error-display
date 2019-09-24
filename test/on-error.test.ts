@@ -19,7 +19,7 @@ describe('test/on-error.test.ts', () => {
     it('should get /', () => {
         return request(app.callback())
             .get('/')
-            .expect('hi, onError')
+            .expect('hi, errorDisplay')
             .expect(200)
     })
 
