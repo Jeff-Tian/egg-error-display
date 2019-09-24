@@ -11,3 +11,15 @@ script:
   - npm run ci
 after_script:
   - npminstall codecov && codecov
+
+jobs:
+  include:
+    - stage: release
+      node_js: lts/*
+      script: skip
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script:
+          - npx semantic-release
+        all_branches: true
