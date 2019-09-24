@@ -1,20 +1,20 @@
 {
-  "name": "egg-aliyun-openapi",
+  "name": "egg-on-error",
   "version": "0.0.0-development",
-  "description": "eggjs plugin for invoke aliyun openapi, wrapper of OpenAPI POP core SDK for Node.js",
+  "description": "Allow customize the default egg-onerror's definition of isProd (线上 !== 生产)",
   "eggPlugin": {
-    "name": "aliyunOpenApi",
+    "name": "on-error",
     "dependencies": []
   },
   "keywords": [
     "egg",
     "eggPlugin",
     "egg-plugin",
-    "aliyun-openapi"
+    "error-handling"
   ],
   "dependencies": {
-    "@alicloud/pop-core": "^1.7.7",
-    "debug": "^2.6.1"
+    "debug": "^2.6.1",
+    "egg-onerror": "^2.1.0"
   },
   "devDependencies": {
     "@types/mocha": "^5.2.6",
@@ -28,13 +28,12 @@
     "egg-ci": "^1.8.0",
     "egg-mock": "^3.13.0",
     "egg-ts-helper": "^1.13.0",
-    "nock": "^11.3.1",
     "supertest": "^4.0.2",
     "ts-node": "^8.2.0",
     "tsc": "^1.20150623.0",
     "tslib": "^1.9.3",
     "tslint": "^5.11.0",
-    "typescript": "3.6.2",
+    "typescript": "3.6.3",
     "webstorm-disable-index": "^1.2.0",
     "semantic-release": "^15.13.24"
   },

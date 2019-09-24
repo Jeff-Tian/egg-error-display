@@ -1,4 +1,4 @@
-exports.aliyunOpenApi = {
+exports.onError = {
     enable: true,
     package: '../../../../../',
 };

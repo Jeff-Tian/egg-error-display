@@ -1,27 +1,108 @@
-import {Application, Context} from 'egg'
-import RPCClient from '@alicloud/pop-core'
+import {Application} from 'egg'
+import http from 'http';
+import fs from 'fs'
 
-// const debug = require('debug')('egg-aliyun-openapi')
-import assert = require('assert');
+export default class AppBootHook {
+    app: Application;
 
-export default (app: Application) => {
-    const config = app.config.aliyunOpenApi
-    assert(config.key)
-    assert(config.secret)
-    assert(config.mount)
+    constructor(app: Application) {
+        this.app = app
+    }
 
-    Object.keys(config.mount).forEach(key => {
-        app.get(config.mount[key], async (ctx: Context) => {
-            const client = new RPCClient({
-                accessKeyId: config.key,
-                accessKeySecret: config.secret,
-                endpoint: `https://vod.${config.regionId}.aliyuncs.com`,
-                apiVersion: config.apiVersion,
-            })
+    configWillLoad() {
+        const {app} = this;
 
-            ctx.body = await client.request(ctx.query.action, {
-                VideoId: ctx.query.videoId,
-            })
-        })
-    })
+        const {detectStatus, detectErrorMessage} = require('egg-onerror/lib/utils')
+        const ErrorView = require('egg-onerror/lib/error_view')
+        const onError = require('egg-onerror/config/config.default')
+
+        const onErrorConfig = app.config.onerror
+        const isProd = app.config.onError.isProd
+        onErrorConfig.html = function (err: any) {
+            const status = detectStatus(err)
+            const errorPageUrl =
+                typeof onErrorConfig.errorPageUrl === 'function'
+                    ? onErrorConfig.errorPageUrl(err, this)
+                    : onErrorConfig.errorPageUrl
+
+            // keep the real response status
+            this.realStatus = status
+            // don't respond any error message in production env
+            if (isProd(app)) {
+                // 5xx
+                if (status >= 500) {
+                    if (errorPageUrl) {
+                        const statusQuery =
+                            (errorPageUrl.indexOf('?') > 0 ? '&' : '?') +
+                            `real_status=${status}`
+                        return this.redirect(errorPageUrl + statusQuery)
+                    }
+                    this.status = 500
+                    this.body = `<h2>Internal Server Error, real status: ${status}</h2>`
+                    return
+                }
+                // 4xx
+                this.status = status
+                this.body = `<h2>${status} ${http.STATUS_CODES[status]}</h2>`
+                return
+            }
+
+            const viewTemplate = fs.readFileSync(onError.onerror.templatePath, 'utf8')
+            const errorView = new ErrorView(this, err, viewTemplate)
+            this.body = errorView.toHTML()
+        }
+        onErrorConfig.json = function (err: any) {
+            const status = detectStatus(err)
+            let errorJson: any = {}
+
+            this.status = status
+            const code = err.code || err.type
+            const message = detectErrorMessage(this, err)
+
+            if (isProd(app)) {
+                // 5xx server side error
+                if (status >= 500) {
+                    errorJson = {
+                        code,
+                        // don't respond any error message in production env
+                        message: http.STATUS_CODES[status],
+                    }
+                } else {
+                    // 4xx client side error
+                    // addition `errors`
+                    errorJson = {
+                        code,
+                        message,
+                        errors: err.errors,
+                    }
+                }
+            } else {
+                errorJson = {
+                    code,
+                    message,
+                    errors: err.errors,
+                }
+
+                if (status >= 500) {
+                    // provide detail error stack in local env
+                    errorJson.stack = err.stack
+                    errorJson.name = err.name
+                    for (const key in err) {
+                        if (!errorJson[key]) {
+                            errorJson[key] = err[key]
+                        }
+                    }
+                }
+            }
+
+            this.body = errorJson
+        }
+        onErrorConfig.js = function (err: any) {
+            app.config.onerror.json.call(this, err, this)
+
+            if (this.createJsonpBody) {
+                this.createJsonpBody(this.body)
+            }
+        }
+    }
 }
