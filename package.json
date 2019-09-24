@@ -65,12 +65,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Jeff-Tian/egg-aliyun-openapi"
+    "url": "https://github.com/Jeff-Tian/egg-on-error"
   },
   "bugs": {
-    "url": "https://github.com/Jeff-Tian/egg-aliyun-openapi/issues"
+    "url": "https://github.com/Jeff-Tian/egg-on-error/issues"
   },
-  "homepage": "https://github.com/Jeff-Tian/egg-aliyun-openapi",
+  "homepage": "https://github.com/Jeff-Tian/egg-on-error",
   "author": "jeff.tian@outlook.com",
   "license": "MIT"
 }
