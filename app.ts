@@ -13,11 +13,12 @@ export default class AppBootHook {
         const {app} = this;
 
         const {detectStatus, detectErrorMessage} = require('egg-onerror/lib/utils')
-        const ErrorView = require('egg-onerror/lib/error_view')
+        const ErrorView = require('./helpers/error-view')
         const onError = require('egg-onerror/config/config.default')
 
         const onErrorConfig = app.config.onerror
         const isProd = app.config.errorDisplay.isProd
+        const serializer = app.config.errorDisplay.serializer
         onErrorConfig.html = function (err: any) {
             const status = detectStatus(err)
             const errorPageUrl =
@@ -49,7 +50,7 @@ export default class AppBootHook {
 
             const viewTemplate = fs.readFileSync(onError.onerror.templatePath, 'utf8')
             const errorView = new ErrorView(this, err, viewTemplate)
-            this.body = errorView.toHTML()
+            this.body = errorView.toHTML(serializer)
         }
         onErrorConfig.json = function (err: any) {
             const status = detectStatus(err)

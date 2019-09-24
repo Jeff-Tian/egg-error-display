@@ -58,7 +58,7 @@
   "files": [
     "config",
     "app.js",
-    "index.d.ts"
+    "helpers"
   ],
   "ci": {
     "version": "8, 9"
