@@ -11,6 +11,6 @@ test_script:
   - node --version
   - npm --version
   - npm run test
-  - npm i codecov && codecov
+  - npm i -g codecov && codecov
 
 build: off
