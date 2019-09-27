@@ -30,4 +30,36 @@ describe('test/on-error.test.ts', () => {
         assert(!res.text.includes('EGG_SESS'))
     })
 
+    it('should error with detail information for json request', async () => {
+        const res = await request(app.callback())
+            .get('/error')
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /json/)
+            .expect(500)
+
+        assert.ok(JSON.parse(res.text))
+        assert.deepStrictEqual(res.body.message, 'test')
+    })
+
+    it('should show ctx.throw errors', async()=>{
+        const res = await request(app.callback())
+            .get('/throw')
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /json/)
+            .expect(422)
+
+        assert.ok(JSON.parse(res.text))
+        assert.deepStrictEqual(res.body.message, 'test-throw')
+    })
+
+    it('should show errors for customized throw', async()=>{
+        const res = await request(app.callback())
+            .get('/customized-throw')
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /json/)
+            .expect(500)
+
+        assert.ok(JSON.parse(res.text))
+        assert.deepStrictEqual(res.body.message, 'non-error thrown: {"errmessage":"hello"}')
+    })
 })

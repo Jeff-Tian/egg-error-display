@@ -10,4 +10,12 @@ module.exports = app => {
     router.get('/error', () => {
         throw new Error('test')
     })
+
+    router.get('/throw', ctx => {
+        ctx.throw(422, 'test-throw')
+    })
+
+    router.get('/customized-throw', ctx => {
+        throw JSON.stringify({errmessage: 'hello'})
+    })
 };
