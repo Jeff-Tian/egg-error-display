@@ -9,13 +9,13 @@ const Mustache = require('mustache');
 const stackTrace = require('stack-trace');
 const util = require('util');
 
-const { detectErrorMessage } = require('egg-onerror/lib/utils');
+const {detectErrorMessage} = require('egg-onerror/lib/utils');
 const startingSlashRegex = /\\|\//;
 
 class ErrorView {
     constructor(ctx, error, template) {
         this.codeContext = 5;
-        this._filterHeaders = [ 'cookie', 'connection' ];
+        this._filterHeaders = ['cookie', 'connection'];
 
         this.ctx = ctx;
         this.error = error;
@@ -128,7 +128,13 @@ class ErrorView {
         const lineNumber = frame.getLineNumber();
         let contents = this.getAssets(filename);
         if (!contents) {
-            contents = fs.readFileSync(filename, 'utf8');
+            try {
+                contents = fs.readFileSync(filename, 'utf8');
+            } catch (ex) {
+                if (ex.code === 'ENOENT' && filename.endsWith('.ts')) {
+                    contents = fs.readFileSync(filename.replace(/\.ts$/, '.js'), 'utf8');
+                }
+            }
             this.setAssets(filename, contents);
         }
         const lines = contents.split(/\r?\n/);
@@ -271,7 +277,7 @@ class ErrorView {
 
         const parsedCookies = cookie.parse(this.request.headers.cookie || '');
         const cookies = Object.keys(parsedCookies).map(key => {
-            return { key, value: parsedCookies[key] };
+            return {key, value: parsedCookies[key]};
         });
 
         return {

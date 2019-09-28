@@ -2,6 +2,7 @@
 
 const ctxThrow = require('./middleware/ctx-throw.js')
 const rawThrow = require('./middleware/throw-raw.js')
+const green = require('./middleware/green.js').default
 
 module.exports = app => {
     const {router} = app;
@@ -22,11 +23,15 @@ module.exports = app => {
         throw JSON.stringify({errmessage: 'hello'})
     })
 
-    router.get('/middleware-error', ctxThrow, ctx=>{
+    router.get('/middleware-error', ctxThrow, ctx => {
         ctx.body = 'ok'
     })
 
-    router.get('/middleware-error-2', rawThrow, ctx=>{
+    router.get('/middleware-error-2', rawThrow, ctx => {
+        ctx.body = 'ok'
+    })
+
+    router.get('/green', green, ctx => {
         ctx.body = 'ok'
     })
 };

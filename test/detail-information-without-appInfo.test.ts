@@ -83,4 +83,25 @@ describe('test/on-error.test.ts', () => {
         assert(res.body.message === 'raw message')
         assert(res.body.detail === 'detail')
     })
+
+    it('should show errors for ctx.throw raw error in middleware', async () => {
+        const res = await request(app.callback())
+            .get('/middleware-error-2')
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /json/)
+            .expect(500)
+
+        assert(res.body.message === 'raw message')
+        assert(res.body.detail === 'detail')
+    })
+
+    it('should show errors for inlineSourceMap=true ts project', async () => {
+        const res = await request(app.callback())
+            .get('/green')
+            .set('Accept', 'text/html')
+            .expect('Content-Type', /html/)
+            .expect(500)
+
+        assert(res.text.startsWith('<!DOCTYPE html>\n'))
+    })
 })
