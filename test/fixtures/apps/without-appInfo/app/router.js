@@ -1,5 +1,8 @@
 "use strict";
 
+const ctxThrow = require('./middleware/ctx-throw.js')
+const rawThrow = require('./middleware/throw-raw.js')
+
 module.exports = app => {
     const {router} = app;
 
@@ -17,5 +20,13 @@ module.exports = app => {
 
     router.get('/customized-throw', ctx => {
         throw JSON.stringify({errmessage: 'hello'})
+    })
+
+    router.get('/middleware-error', ctxThrow, ctx=>{
+        ctx.body = 'ok'
+    })
+
+    router.get('/middleware-error-2', rawThrow, ctx=>{
+        ctx.body = 'ok'
     })
 };

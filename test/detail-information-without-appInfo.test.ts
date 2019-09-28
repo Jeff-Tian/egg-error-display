@@ -41,7 +41,7 @@ describe('test/on-error.test.ts', () => {
         assert.deepStrictEqual(res.body.message, 'test')
     })
 
-    it('should show ctx.throw errors', async()=>{
+    it('should show ctx.throw errors', async () => {
         const res = await request(app.callback())
             .get('/throw')
             .set('Accept', 'application/json')
@@ -52,7 +52,7 @@ describe('test/on-error.test.ts', () => {
         assert.deepStrictEqual(res.body.message, 'test-throw')
     })
 
-    it('should show errors for customized throw', async()=>{
+    it('should show errors for customized throw', async () => {
         const res = await request(app.callback())
             .get('/customized-throw')
             .set('Accept', 'application/json')
@@ -61,5 +61,26 @@ describe('test/on-error.test.ts', () => {
 
         assert.ok(JSON.parse(res.text))
         assert.deepStrictEqual(res.body.message, 'non-error thrown: {"errmessage":"hello"}')
+    })
+
+    it('should show errors for ctx.throw in middleware', async () => {
+        const res = await request(app.callback())
+            .get('/middleware-error')
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /json/)
+            .expect(422)
+
+        assert(res.body.message === 'error!')
+    })
+
+    it('should show errors for ctx.throw raw error in middleware', async () => {
+        const res = await request(app.callback())
+            .get('/middleware-error-2')
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /json/)
+            .expect(500)
+
+        assert(res.body.message === 'raw message')
+        assert(res.body.detail === 'detail')
     })
 })
