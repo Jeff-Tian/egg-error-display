@@ -1,6 +1,8 @@
 sudo: false
 language: node_js
 node_js:
+  - '8'
+  - '9'
   - '10'
 install:
   - npm i
@@ -8,7 +10,6 @@ script:
   - npm run ci
 after_script:
   - npm i codecov && codecov
-
 jobs:
   include:
     - stage: release

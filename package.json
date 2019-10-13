@@ -61,7 +61,7 @@
     "helpers"
   ],
   "ci": {
-    "version": "8, 9"
+    "version": "8, 9, 10"
   },
   "repository": {
     "type": "git",
