@@ -52,7 +52,7 @@
     "pkgfiles": "egg-bin pkgfiles",
     "autod": "autod",
     "clean": "ets clean",
-    "prepublish": "npm run test-local && echo $(pwd) && rm ./app/middleware/nonErrorCatcher.ts",
+    "prepublish": "npm run test-local && rm app/middleware/nonErrorCatcher.ts",
     "semantic-release": "semantic-release"
   },
   "files": [
