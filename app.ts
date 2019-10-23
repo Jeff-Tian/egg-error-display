@@ -105,5 +105,9 @@ export default class AppBootHook {
                 this.createJsonpBody(this.body)
             }
         }
+
+        if (app.config.coreMiddleware.indexOf('nonErrorCatcher') < 0) {
+            app.config.coreMiddleware.push('nonErrorCatcher')
+        }
     }
 }

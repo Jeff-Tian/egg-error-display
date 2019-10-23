@@ -29,4 +29,13 @@ describe('test/on-error.test.ts', () => {
         assert(res.text.startsWith('<!DOCTYPE html>'))
     })
 
+    it('should handle Error object', async () => {
+        const res = await request(app.callback()).get('/error').set('accept', 'application/json').expect(500)
+        assert(res.body.message === 'test')
+    })
+
+    it('should also handle non-error object', async () => {
+        const res = await request(app.callback()).get('/non-error-object').set('accept', 'application/json').expect(500)
+        assert(res.body.details === 'test')
+    })
 })

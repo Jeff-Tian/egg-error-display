@@ -10,4 +10,8 @@ module.exports = app => {
     router.get('/error', () => {
         throw new Error('test')
     })
+
+    router.get('/non-error-object', () => {
+        throw {details: 'test'}
+    })
 };
