@@ -19,6 +19,11 @@
 [download-image]: https://img.shields.io/npm/dm/egg-error-display.svg?style=flat-square
 [download-url]: https://npmjs.org/package/egg-error-display
 
+
+
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=Jeff-Tian_egg-on-error)](https://sonarcloud.io/dashboard?id=Jeff-Tian_egg-on-error)
+
+
 ## Why
 egg 项目本地跑起来后，如果有报错，会展示非常详细的错误堆栈。但是一旦发布到线上，就只会显示一个出错了，但是具体信息被隐藏了。
 

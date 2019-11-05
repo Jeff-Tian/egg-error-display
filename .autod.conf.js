@@ -21,6 +21,6 @@ module.exports = {
   exclude: [
     './test/fixtures',
     './docs',
-    './coverage',
+    './coverage'
   ],
 };

@@ -7,9 +7,9 @@ node_modules/
 coverage/
 .idea/
 *.swp
+app/
 # ignore the .ts files
 *.ts
-app/**/*.ts
 
 # include the .d.ts files
 !*.d.ts
