@@ -57,7 +57,6 @@
   },
   "files": [
     "app",
-    "app/middleware/nonErrorCatcher.js",
     "config",
     "app.js",
     "helpers"

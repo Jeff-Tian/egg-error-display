@@ -7,7 +7,6 @@ node_modules/
 coverage/
 .idea/
 *.swp
-s
 # ignore the .ts files
 **/*.ts
 

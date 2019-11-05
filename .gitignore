@@ -17,3 +17,4 @@ typings/config/**/*.ts
 codegen/dist/**/*.ts
 
 app.js
+**/*.d.ts
