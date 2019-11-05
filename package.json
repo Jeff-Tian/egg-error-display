@@ -55,7 +55,7 @@
     "tsc": "ets && tsc -p tsconfig.json",
     "cov": "egg-bin cov",
     "lint": "tslint .",
-    "ci": "egg-bin pkgfiles --check && npm run lint && npm run test-local && npm run cov",
+    "ci": "npm run lint && npm run test-local && npm run cov",
     "pkgfiles": "egg-bin pkgfiles",
     "autod": "autod",
     "clean": "ets clean",
