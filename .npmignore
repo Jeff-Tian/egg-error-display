@@ -8,7 +8,7 @@ coverage/
 .idea/
 *.swp
 # ignore the .ts files
-**/*.ts
+*.ts
 
 # include the .d.ts files
-!**/*.d.ts
+!*.d.ts
