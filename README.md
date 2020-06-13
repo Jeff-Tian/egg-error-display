@@ -1,6 +1,6 @@
 # egg-error-display
 
-> Allow customize the default egg-onerror's definition of isProd (线上 !== 生产)
+> Allow customizing the default egg-onerror's definition of isProd (线上 !== 生产)
 
 [![NPM version][npm-image]][npm-url]
 [![Build Status](https://travis-ci.org/Jeff-Tian/egg-error-display.svg?branch=master)](https://travis-ci.org/Jeff-Tian/egg-error-display)

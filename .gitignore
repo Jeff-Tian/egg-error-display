@@ -17,4 +17,5 @@ typings/config/**/*.ts
 codegen/dist/**/*.ts
 
 app.js
+app/middleware/nonErrorCatcher.js
 **/*.d.ts
