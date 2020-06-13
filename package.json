@@ -65,10 +65,8 @@
   "files": [
     "app.js",
     "helpers",
-    "app/**/*.js",
-    "app/**/*.d.ts",
-    "config/**/*.js",
-    "config/**/*.d.ts"
+    "app",
+    "config"
   ],
   "ci": {
     "version": "8, 9, 10"
