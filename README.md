@@ -3,7 +3,7 @@
 > Allow customize the default egg-onerror's definition of isProd (线上 !== 生产)
 
 [![NPM version][npm-image]][npm-url]
-[![Build Status](https://travis-ci.com/Jeff-Tian/egg-on-error.svg?branch=master)](https://travis-ci.com/Jeff-Tian/egg-on-error)
+[![Build Status](https://travis-ci.org/Jeff-Tian/egg-error-display.svg?branch=master)](https://travis-ci.org/Jeff-Tian/egg-error-display)
 [![Build status](https://ci.appveyor.com/api/projects/status/jnmcoqymjmyvf0s8?svg=true)](https://ci.appveyor.com/project/Jeff-Tian/egg-on-error)
 [![codecov](https://codecov.io/gh/Jeff-Tian/egg-on-error/branch/master/graph/badge.svg)](https://codecov.io/gh/Jeff-Tian/egg-on-error)
 [![David deps][david-image]][david-url]
